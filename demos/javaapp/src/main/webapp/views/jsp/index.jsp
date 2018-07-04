@@ -2,7 +2,10 @@
 <%
     String domain = request.getScheme() + "://" + request.getServerName() + request.getContextPath();
     String host = request.getRemoteHost();
-    int port = request.getServerPort();
+//    int port = request.getServerPort();
+    Integer port = Integer.valueOf(System.getProperty("tomcat.connector.port"));
+
+
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
