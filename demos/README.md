@@ -1,5 +1,20 @@
 # Nginx 示例教程
 
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [教程说明](#教程说明)
+    - [环境要求](#环境要求)
+    - [javaapp](#javaapp)
+    - [nginx-1.14.0](#nginx-1140)
+    - [scripts](#scripts)
+    - [添加 hosts](#添加-hosts)
+- [示例说明](#示例说明)
+    - [Demo01 - 简单的反向代理示例](#demo01---简单的反向代理示例)
+    - [Demo02 - 负载均衡示例](#demo02---负载均衡示例)
+    - [Demo03 - 多 webapp 示例](#demo03---多-webapp-示例)
+
+<!-- /TOC -->
+
 ## 教程说明
 
 ### 环境要求
@@ -111,7 +126,7 @@ Nginx 配置文件：[demo03.conf](nginx-1.14.0/conf/demos/demo03.conf)
 2.  配置 hosts：`127.0.0.1 www.demo03.com`
 3.  在浏览器中访问：www.demo03.com
 
-如图所示：三次访问的 context 各不相同。
+如图所示：三次访问的 context 和 端口号各不相同。说明 Nginx 根据不同的 context 将请求分发到指定的服务器上。
 
 <div align="center">
 <img src="https://upload-images.jianshu.io/upload_images/3101171-ed726bdd60bea9ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="600"/>
