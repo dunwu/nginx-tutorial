@@ -10,7 +10,7 @@ call nginx-start.bat
 
 echo ">>>> 2. Start javaapp - localhost:9010"
 cd "../javaapp"
-java -Dtomcat.connector.port=9010 -cp "target/JavaWebApp/WEB-INF/classes;target/JavaWebApp/WEB-INF/lib/*" io.github.dunwu.app.Main
+java -Dtomcat.connector.port=9010 -cp "target/JavaWebApp/WEB-INF/classes;target/JavaWebApp/WEB-INF/lib/*" io.github.dunwu.Main
 pause
 
 

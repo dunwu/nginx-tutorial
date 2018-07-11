@@ -13,9 +13,9 @@ call nginx-start.bat
 
 echo ">>>> 2. Start 3 java app: localhost:9021, localhost:9022, localhost:9023"
 cd "../javaapp"
-start /min java -Dtomcat.connector.port=9021 -cp "target/JavaWebApp/WEB-INF/classes;target/JavaWebApp/WEB-INF/lib/*" io.github.dunwu.app.Main
-start /min java -Dtomcat.connector.port=9022 -cp "target/JavaWebApp/WEB-INF/classes;target/JavaWebApp/WEB-INF/lib/*" io.github.dunwu.app.Main
-start /min java -Dtomcat.connector.port=9023 -cp "target/JavaWebApp/WEB-INF/classes;target/JavaWebApp/WEB-INF/lib/*" io.github.dunwu.app.Main
+start /min java -Dtomcat.connector.port=9021 -cp "target/JavaWebApp/WEB-INF/classes;target/JavaWebApp/WEB-INF/lib/*" io.github.dunwu.Main
+start /min java -Dtomcat.connector.port=9022 -cp "target/JavaWebApp/WEB-INF/classes;target/JavaWebApp/WEB-INF/lib/*" io.github.dunwu.Main
+start /min java -Dtomcat.connector.port=9023 -cp "target/JavaWebApp/WEB-INF/classes;target/JavaWebApp/WEB-INF/lib/*" io.github.dunwu.Main
 pause
 
 
