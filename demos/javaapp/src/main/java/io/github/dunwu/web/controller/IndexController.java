@@ -1,7 +1,7 @@
 /**
  * The Apache License 2.0 Copyright (c) 2016 Zhang Peng
  */
-package io.github.dunwu.app.controller;
+package io.github.dunwu.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

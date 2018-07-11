@@ -39,6 +39,24 @@
     <dispatcher>REQUEST</dispatcher>
     <dispatcher>FORWARD</dispatcher>
   </filter-mapping>
+
+  <filter>
+    <filter-name>CorsFilter</filter-name>
+    <filter-class>io.github.dunwu.filter.CorsFilter</filter-class>
+    <init-param>
+      <param-name>headerKey</param-name>
+      <param-value>Host</param-value>
+    </init-param>
+    <init-param>
+      <param-name>regex</param-name>
+      <!--<param-value>((http://)|(https://))?(\w*\.)*(demo*.com|demo*)(\S)*</param-value>-->
+      <param-value>((http://)|(https://))?(\w*\.)*(\S)*</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CorsFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <!-- FILTER END -->
 
   <welcome-file-list>

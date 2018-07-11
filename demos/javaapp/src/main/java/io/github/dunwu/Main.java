@@ -1,4 +1,4 @@
-package io.github.dunwu.app;
+package io.github.dunwu;
 
 import java.io.File;
 import org.apache.catalina.Server;
