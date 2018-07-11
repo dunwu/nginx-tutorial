@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date 2017/8/23.
  */
 @Controller
-@RequestMapping(value = "/api")
 public class ApiController {
 
     @ResponseBody
