@@ -1,0 +1,6 @@
+{
+  "name": "CoreContainer",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CoreContainer.jsx"
+}

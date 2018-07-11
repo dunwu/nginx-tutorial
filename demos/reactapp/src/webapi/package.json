@@ -1,0 +1,6 @@
+{
+  "name": "webapi",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./webapi.js"
+}

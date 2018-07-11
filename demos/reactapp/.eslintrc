@@ -1,0 +1,94 @@
+{
+  "extends": [
+    "eslint-config-airbnb"
+  ],
+  "parser": "babel-eslint",
+  "globals": {
+    "Action": false,
+    "__DEV__": false,
+    "__DEV__LOG__": false,
+    "__DEV__LOG__DIFF__": true,
+    "__DEV__IMMUTABLE_CHECK__": false,
+    "__PROD__": false,
+    "__DEBUG__": false,
+    "__DEBUG_NEW_WINDOW__": false,
+    "__BASENAME__": false,
+    "Image": {},
+    "FileReader": {},
+    "Request": {},
+    "fetch": {},
+    "XMLHttpRequest": {}
+  },
+  "rules": {
+    "arrow-body-style": [
+      "off"
+    ],
+    "global-require": [
+      "warn"
+    ],
+    "no-underscore-dangle": [
+      "off"
+    ],
+    "no-case-declarations": [
+      "warn"
+    ],
+    "max-len": [
+      "warn",
+      120,
+      {
+        "ignoreUrls": true
+      }
+    ],
+    "no-unused-vars": [
+      "warn"
+    ],
+    "no-nested-ternary": [
+      "warn"
+    ],
+    "no-class-assign": [
+      "off"
+    ],
+    "no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": true
+      }
+    ],
+    "new-cap": [
+      "error",
+      {
+        "capIsNewExceptions": [
+          "List",
+          "Map",
+          "OrderedMap",
+          "Set",
+          "OrderedSet",
+          "Stack",
+          "Range",
+          "Repeat",
+          "Record",
+          "Seq"
+        ]
+      }
+    ],
+    "linebreak-style": [
+      "off"
+    ],
+    "import/prefer-default-export": [
+      "off"
+    ],
+    "react/prefer-stateless-function": [
+      "off"
+    ],
+    "react/jsx-curly-spacing": [
+      "off"
+    ],
+    "react/forbid-prop-types": [
+      "off"
+    ],
+    "react/no-unused-prop-types": [
+      "warn"
+    ]
+  }
+}
