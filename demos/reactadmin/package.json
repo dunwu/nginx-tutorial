@@ -1,0 +1,104 @@
+{
+  "name": "react-admin",
+  "version": "0.0.1",
+  "private": true,
+  "homepage": ".",
+  "scripts": {
+    "dev": "node script/dev.js",
+    "prod": "node script/prod.js",
+    "real": "node script/real.js",
+    "test": "node script/test.js --env=jsdom",
+    "deploy": "node script/deploy.js",
+    "lint": "eslint -c config/.eslintrc.js --ext .js,.jsx src/"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "test/**/*.{js,jsx}"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/polyfills.js"
+    ],
+    "testMatch": [
+      "<rootDir>/test/**/__tests__/**/*.js?(x)",
+      "<rootDir>/test/**/?(*.)(spec|test).js?(x)"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
+    ]
+  },
+  "dependencies": {
+    "antd": "^2.13.4",
+    "axios": "^0.16.2",
+    "classnames": "^2.2.5",
+    "lodash": "^4.17.4",
+    "mockjs": "^1.0.1-beta3",
+    "moment": "^2.19.1",
+    "react": "15.6.0",
+    "react-dom": "15.6.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.6",
+    "redux": "^3.7.2",
+    "redux-actions": "^2.2.1",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.5",
+    "axios-mock-adapter": "^1.9.0",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.0",
+    "babel-plugin-import": "^1.2.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "case-sensitive-paths-webpack-plugin": "^2.1.1",
+    "chalk": "^2.1.0",
+    "css-loader": "^0.28.7",
+    "dotenv": "^4.0.0",
+    "eslint": "4.4.1",
+    "eslint-config-airbnb": "15.1.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "extract-text-webpack-plugin": "^3.0.1",
+    "file-loader": "^1.1.5",
+    "fs-extra": "^4.0.2",
+    "gh-pages": "^1.0.0",
+    "html-webpack-plugin": "^2.30.1",
+    "jest": "^21.2.1",
+    "less": "^3.0.0-alpha.3",
+    "less-loader": "^4.0.5",
+    "postcss-flexbugs-fixes": "^3.2.0",
+    "postcss-loader": "^2.0.6",
+    "react-dev-utils": "^4.1.0",
+    "react-hot-loader": "3.0.0-beta.6",
+    "redux-logger": "^3.0.6",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "webpack": "3.6.0",
+    "webpack-dev-server": "2.8.2",
+    "webpack-manifest-plugin": "1.2.1"
+  }
+}
