@@ -12,6 +12,8 @@
     - [Demo01 - 简单的反向代理示例](#demo01---简单的反向代理示例)
     - [Demo02 - 负载均衡示例](#demo02---负载均衡示例)
     - [Demo03 - 多 webapp 示例](#demo03---多-webapp-示例)
+    - [Demo04 - 前后端分离示例](#demo04---前后端分离示例)
+    - [Demo05 - 配置文件服务器示例](#demo05---配置文件服务器示例)
 
 <!-- /TOC -->
 
@@ -47,7 +49,7 @@ nginx-1.14.0 是 Nginx 的 windows 环境的 1.14.0 官方版本。之所以把�
 - [nginx-start.bat](nginx-1.14.0/nginx-start.bat)
 - [nginx-stop.bat](nginx-1.14.0/nginx-stop.bat)
 
-在 Nginx 默认配置文件 [nginx.conf](nginx-1.14.0/conf/nginx.conf) 中我通过配置 `include demos/*.conf;` 将 [Nginx/demos/nginx-1.14.0/conf/demos](nginx-1.14.0/conf/demos) 目录中所有 Nginx 配置示例都引入。
+在 Nginx 默认配置文件 [nginx.conf](nginx-1.14.0/conf/nginx.conf) 中我通过配置 `include demos/*.conf;` 将 [Nginx/demos/nginx-1.14.0/conf/demos](nginx-1.14.0/conf/conf.d) 目录中所有 Nginx 配置示例都引入。
 
 ### scripts
 
@@ -70,7 +72,7 @@ nginx-1.14.0 是 Nginx 的 windows 环境的 1.14.0 官方版本。之所以把�
 ### Demo01 - 简单的反向代理示例
 
 本示例启动一个 JavaApp，访问地址为：localhost:9010。
-在 Nginx 中配置它的反向代理 host 为 www.demo01.com。Nginx 配置文件：[demo01.conf](nginx-1.14.0/conf/demos/demo01.conf)
+在 Nginx 中配置它的反向代理 host 为 www.demo01.com。Nginx 配置文件：[demo01.conf](nginx-1.14.0/conf/conf.d/demo01.conf)
 
 运行步骤：
 
@@ -90,7 +92,7 @@ nginx-1.14.0 是 Nginx 的 windows 环境的 1.14.0 官方版本。之所以把�
 - localhost:9022
 - localhost:9023
 
-在 Nginx 中统一配置它们的反向代理 host 为 www.demo02.com，并设置相应权重，以便做负载均衡。Nginx 配置文件：[demo02.conf](nginx-1.14.0/conf/demos/demo02.conf)
+在 Nginx 中统一配置它们的反向代理 host 为 www.demo02.com，并设置相应权重，以便做负载均衡。Nginx 配置文件：[demo02.conf](nginx-1.14.0/conf/conf.d/demo02.conf)
 
 运行步骤：
 
@@ -118,17 +120,77 @@ http 的默认端口号是 80，如果在一台服务器上同时启动这 3 个
 
 Nginx 中的配置要点就是为每个 server 配置一个 upstream。并在 server 配置下的 location 中指定 context 对应的 upstream。
 
-Nginx 配置文件：[demo03.conf](nginx-1.14.0/conf/demos/demo03.conf)
+Nginx 配置文件：[demo03.conf](nginx-1.14.0/conf/conf.d/demo03.conf)
 
 运行步骤：
 
-1.  执行 [demo02-start.bat](scripts/demo03-start.bat) 脚本。
+1.  执行 [demo03-start.bat](scripts/demo03-start.bat) 脚本。
 2.  配置 hosts：`127.0.0.1 www.demo03.com`
 3.  在浏览器中访问：www.demo03.com
 
-如图所示：三次访问的 context 和 端口号各不相同。说明 Nginx 根据不同的 context 将请求分发到指定的服务器上。
+如图所示：三次访问的 context 和端口号各不相同。说明 Nginx 根据不同的 context 将请求分发到指定的服务器上。
 
 <div align="center">
 <img src="https://upload-images.jianshu.io/upload_images/3101171-ed726bdd60bea9ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="600"/>
 </div>
 
+### Demo04 - 前后端分离示例
+
+做 web 开发，常常会把前后端分离，减少耦合。那么，前后端之间如何通信呢？可以使用 Nginx 来代理。
+
+本例中，后端是一个 java web 项目；前端是一个 react 项目。
+
+Nginx 中的配置要点
+
+指定 root 参数为 react 项目构建后的静态文件存储路径。
+指定后端应用的访问地址
+
+```
+location ~ ^/api/ {
+    proxy_pass http://backend;
+    rewrite "^/api/(.*)$" /$1 break;
+}
+```
+
+Nginx 配置文件：[demo04.conf](nginx-1.14.0/conf/conf.d/demo04.conf)
+
+运行准备：由于我的配置中设置 root 的路径为我自己机器中的绝对路径，所以，各位在运行本例的时候要根据自己的实际情况替换。
+
+运行步骤：
+
+1.  执行 [demo04-start.bat](scripts/demo04-start.bat) 脚本。
+2.  配置 hosts：`127.0.0.1 www.demo04.com`
+3.  在浏览器中访问：www.demo04.com
+
+效果图：
+
+![](http://oyz7npk35.bkt.clouddn.com/images/20180920181012180110.png)
+
+按 F12 打开浏览器控制台，输入用户名/密码（admin/123456）执行登录操作。如下图所示，可以看到登录后的访问请求被转发到了 Nginx 配置的服务器地址。
+![](http://oyz7npk35.bkt.clouddn.com/images/20180920181012180317.png)
+
+### Demo05 - 配置文件服务器示例
+
+有时候，团队需要归档一些数据或资料，那么文件服务器必不可少。使用 Nginx 可以非常快速便捷的搭建一个简易的文件服务。
+
+Nginx 中的配置要点：
+
+- 将 autoindex 开启可以显示目录，默认不开启。
+- 将 autoindex_exact_size 开启可以显示文件的大小。
+- 将 autoindex_localtime 开启可以显示文件的修改时间。
+- root 用来设置开放为文件服务的根路径。
+- charset 设置为 `charset utf-8,gbk;`，可以避免中文乱码问题（windows 服务器下设置后，依然乱码，本人暂时没有找到解决方法）。
+
+Nginx 配置文件：[demo05.conf](nginx-1.14.0/conf/conf.d/demo05.conf)
+
+运行准备：由于我的配置中设置 root 的路径为我自己机器中的绝对路径，所以，各位在运行本例的时候要根据自己的实际情况替换。
+
+运行步骤：
+
+1.  执行 [demo05-start.bat](scripts/demo05-start.bat) 脚本。
+2.  配置 hosts：`127.0.0.1 www.demo05.com`
+3.  在浏览器中访问：www.demo05.com
+
+效果图如下：
+
+![](http://oyz7npk35.bkt.clouddn.com/images/20180920181012181357.png)

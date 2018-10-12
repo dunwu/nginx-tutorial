@@ -1,16 +1,14 @@
 # Nginx
 
 > 本项目是一个 Nginx 极简教程，目的在于帮助新手快速入门 Nginx。
-> 
+>
 > [demos](demos) 目录中的示例模拟了工作中的一些常用实战场景，并且都可以通过脚本一键式启动，让您可以快速看到演示效果。
 
-<!-- TOC depthFrom:2 depthTo:4 -->
+<!-- TOC depthFrom:2 depthTo:3 -->
 
 - [概述](#概述)
 - [安装与使用](#安装与使用)
     - [安装](#安装)
-        - [从源代码编译 Nginx](#从源代码编译-nginx)
-        - [Windows 安装](#windows-安装)
     - [使用](#使用)
 - [nginx 配置实战](#nginx-配置实战)
     - [http 反向代理配置](#http-反向代理配置)
@@ -18,6 +16,7 @@
     - [网站有多个 webapp 的配置](#网站有多个-webapp-的配置)
     - [https 反向代理配置](#https-反向代理配置)
     - [静态站点配置](#静态站点配置)
+    - [搭建文件服务器](#搭建文件服务器)
     - [跨域解决方案](#跨域解决方案)
 - [参考](#参考)
 
@@ -29,17 +28,13 @@
 
 **Nginx (engine x)** 是一款轻量级的 Web 服务器 、反向代理服务器及电子邮件（IMAP/POP3）代理服务器。
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/dunwu/JavaWeb/master/images/tools/nginx/nginx.jpg" />
-</div>
+![](https://raw.githubusercontent.com/dunwu/JavaWeb/master/images/tools/nginx/nginx.jpg)
 
 **什么是反向代理？**
 
 反向代理（Reverse Proxy）方式是指以代理服务器来接受 internet 上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 internet 上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。
 
-<div align="center">
-<img src="https://raw.githubusercontent.com/dunwu/JavaWeb/master/images/tools/nginx/代理服务器.jpg" />
-</div>
+![](http://dunwu.test.upcdn.net/images/network/proxy-server.jpg)
 
 ## 安装与使用
 
@@ -444,6 +439,34 @@ http {
 127.0.0.1 static.zp.cn
 
 此时，在本地浏览器访问 static.zp.cn ，就可以访问静态站点了。
+
+### 搭建文件服务器
+
+有时候，团队需要归档一些数据或资料，那么文件服务器必不可少。使用 Nginx 可以非常快速便捷的搭建一个简易的文件服务。
+
+Nginx 中的配置要点：
+
+- 将 autoindex 开启可以显示目录，默认不开启。
+- 将 autoindex_exact_size 开启可以显示文件的大小。
+- 将 autoindex_localtime 开启可以显示文件的修改时间。
+- root 用来设置开放为文件服务的根路径。
+- charset 设置为 `charset utf-8,gbk;`，可以避免中文乱码问题（windows 服务器下设置后，依然乱码，本人暂时没有找到解决方法）。
+
+一个最简化的配置如下：
+
+```nginx
+autoindex on;# 显示目录
+autoindex_exact_size on;# 显示文件大小
+autoindex_localtime on;# 显示文件时间
+
+server {
+    charset      utf-8,gbk; # windows 服务器下设置后，依然乱码，暂时无解
+    listen       9050 default_server;
+    listen       [::]:9050 default_server;
+    server_name  _;
+    root         /share/fs;
+}
+```
 
 ### 跨域解决方案
 
