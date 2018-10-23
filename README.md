@@ -40,34 +40,7 @@
 
 ### 安装
 
-[nginx 官网下载地址](http://nginx.org/)
-
-发布版本分为 Linux 和 windows 版本。
-
-也可以下载源码，编译后运行。
-
-#### 从源代码编译 Nginx
-
-把源码解压缩之后，在终端里运行如下命令：
-
-```sh
-$ ./configure
-$ make
-$ sudo make install
-```
-
-默认情况下，Nginx 会被安装在 `/usr/local/nginx`。通过设定[编译选项](http://tool.oschina.net/uploads/apidocs/nginx-zh/NginxChsInstallOptions.htm)，你可以改变这个设定。
-
-#### Windows 安装
-
-为了安装 Nginx / Win32，需先下载它。然后解压之，然后运行即可。下面以 C 盘根目录为例说明下：
-
-```sh
-cd C:
-cd C:\nginx-0.8.54   start nginx
-```
-
-Nginx / Win32 是运行在一个控制台程序，而非 windows 服务方式的。服务器方式目前还是开发尝试中。
+详细安装方法请参考：[Nginx 安装](install-nginx.md)
 
 ### 使用
 
@@ -558,4 +531,5 @@ server {
 
 ## 参考
 
-[Nginx 的中文维基](http://tool.oschina.net/apidocs/apidoc?api=nginx-zh)
+- [Nginx 的中文维基](http://tool.oschina.net/apidocs/apidoc?api=nginx-zh)
+- [Nginx 安装](install-nginx.md)
