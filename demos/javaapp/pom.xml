@@ -13,7 +13,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <spring.version>5.0.2.RELEASE</spring.version>
-    <tomcat.version>8.5.24</tomcat.version>
+    <tomcat.version>8.5.34</tomcat.version>
   </properties>
   <dependencies>
     <!-- javaee begin -->
