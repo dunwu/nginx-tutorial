@@ -5,6 +5,8 @@
 - [教程说明](#教程说明)
     - [环境要求](#环境要求)
     - [javaapp](#javaapp)
+    - [reactadmin](#reactadmin)
+    - [reactapp](#reactapp)
     - [nginx-1.14.0](#nginx-1140)
     - [scripts](#scripts)
     - [添加 hosts](#添加-hosts)
@@ -14,6 +16,7 @@
     - [Demo03 - 多 webapp 示例](#demo03---多-webapp-示例)
     - [Demo04 - 前后端分离示例](#demo04---前后端分离示例)
     - [Demo05 - 配置文件服务器示例](#demo05---配置文件服务器示例)
+    - [Demo06 - 静态站点示例](#demo06---静态站点示例)
 
 <!-- /TOC -->
 
@@ -39,6 +42,14 @@ java -Dtomcat.connector.port=9030 -Dtomcat.context.path=/app -cp "JavaWebApp/WEB
 - `JavaWebApp/WEB-INF/classes;JavaWebApp/WEB-INF/lib/*` 是 class 路径和 lib 路径，必须指定，否则无法识别启动类。
 
 如上的配置参数，可以启动一个端口号为 9030，上下文为 `/app` 的服务。访问路径为：http://localhost:9030/app。
+
+### reactadmin
+
+一个简单的 React 应用。用于演示静态站点场景。
+
+### reactapp
+
+一个简单的 React 应用，生产环境时，会访问后台 API。用于演示前后端分离的应用场景。
 
 ### nginx-1.14.0
 
@@ -80,9 +91,7 @@ nginx-1.14.0 是 Nginx 的 windows 环境的 1.14.0 官方版本。之所以把�
 2.  配置 hosts：`127.0.0.1 www.demo01.com`
 3.  在浏览器中访问：www.demo01.com
 
-<div align="center">
-<img src="https://upload-images.jianshu.io/upload_images/3101171-5c01eb12cba5e895.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="500"/>
-</div>
+![](images\nginx-demo01.png)
 
 ### Demo02 - 负载均衡示例
 
@@ -102,9 +111,7 @@ nginx-1.14.0 是 Nginx 的 windows 环境的 1.14.0 官方版本。之所以把�
 
 如图所示：三次访问的端口号各不相同，说明三个服务器各自均有不同机率（基于权重）被访问。
 
-<div align="center">
-<img src="https://upload-images.jianshu.io/upload_images/3101171-c11b9d9f4b47c689.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="600"/>
-</div>
+![](images\nginx-demo02.png)
 
 ### Demo03 - 多 webapp 示例
 
@@ -130,9 +137,7 @@ Nginx 配置文件：[demo03.conf](nginx-1.14.0/conf/conf.d/demo03.conf)
 
 如图所示：三次访问的 context 和端口号各不相同。说明 Nginx 根据不同的 context 将请求分发到指定的服务器上。
 
-<div align="center">
-<img src="https://upload-images.jianshu.io/upload_images/3101171-ed726bdd60bea9ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" width="600"/>
-</div>
+![](images\nginx-demo03.png)
 
 ### Demo04 - 前后端分离示例
 
@@ -164,10 +169,11 @@ Nginx 配置文件：[demo04.conf](nginx-1.14.0/conf/conf.d/demo04.conf)
 
 效果图：
 
-![](http://oyz7npk35.bkt.clouddn.com/images/20180920181012180110.png)
+![](images\nginx-demo04.png)
 
 按 F12 打开浏览器控制台，输入用户名/密码（admin/123456）执行登录操作。如下图所示，可以看到登录后的访问请求被转发到了 Nginx 配置的服务器地址。
-![](http://oyz7npk35.bkt.clouddn.com/images/20180920181012180317.png)
+
+![](<images\nginx-demo04(2).png>)
 
 ### Demo05 - 配置文件服务器示例
 
@@ -193,4 +199,25 @@ Nginx 配置文件：[demo05.conf](nginx-1.14.0/conf/conf.d/demo05.conf)
 
 效果图如下：
 
-![](http://oyz7npk35.bkt.clouddn.com/images/20180920181012181357.png)
+![](images\nginx-demo05.png)
+
+### Demo06 - 静态站点示例
+
+帮助文档、博客、用户手册等等，往往是由 html、js、css、图片等静态资源组成的静态站点型的网站。这时，可以使用 Nginx 快速搭建一个静态访问站点。
+
+Nginx 中的配置要点：
+
+- 设置 location ，指定支持访问的静态资源类型。如：`location ~* ^.+\.(jpg|jpeg|gif|png|ico|css|js|pdf|txt)`
+- root 用来设置开放为文件服务的根路径。
+- index 用来设置首页。
+
+运行步骤：
+
+1. 执行 [build-reactadmin.bat](scripts/build-reactadmin.bat) 脚本编译构建一个 React 静态站点项目。
+2. 执行 [demo06-start.bat](scripts/demo06-start.bat) 脚本。
+3. 配置 hosts：`127.0.0.1 www.demo06.com`
+4. 在浏览器中访问：www.demo06.com
+
+效果图如下：
+
+![](images\nginx-demo06.png)
