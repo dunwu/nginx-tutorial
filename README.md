@@ -18,7 +18,7 @@
     - [静态站点配置](#静态站点配置)
     - [搭建文件服务器](#搭建文件服务器)
     - [跨域解决方案](#跨域解决方案)
-- [参考](#参考)
+- [更多内容](#更多内容)
 
 <!-- /TOC -->
 
@@ -28,13 +28,13 @@
 
 **Nginx (engine x)** 是一款轻量级的 Web 服务器 、反向代理服务器及电子邮件（IMAP/POP3）代理服务器。
 
-<br><div align="center"><img src="https://raw.githubusercontent.com/dunwu/JavaWeb/master/images/tools/nginx/nginx.jpg"/></div><br>
+<br><div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/images/web/nginx/nginx.jpg"/></div><br>
 
 **什么是反向代理？**
 
 反向代理（Reverse Proxy）方式是指以代理服务器来接受 internet 上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 internet 上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。
 
-<br><div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/images/network/proxy-server.jpg"/></div><br>
+<br><div align="center"><img src="https://raw.githubusercontent.com/dunwu/images/master/images/web/reverse-proxy.png"/></div><br>
 
 ## 安装与使用
 
@@ -529,7 +529,7 @@ server {
 
 到此，就完成了。
 
-## 参考
+## 更多内容
 
 - [Nginx 的中文维基](http://tool.oschina.net/apidocs/apidoc?api=nginx-zh)
 - [Nginx 安装](install-nginx.md)
