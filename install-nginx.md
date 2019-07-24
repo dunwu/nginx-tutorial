@@ -166,7 +166,7 @@ $ systemctl enable nginx.service
 
 ## 脚本
 
-| [安装脚本](https://github.com/dunwu/OS/tree/master/codes/deploy/tool/nginx) |
+| [安装脚本](https://github.com/dunwu/linux-tutorial/tree/master/codes/linux/soft) |
 
 ## 参考资料
 
