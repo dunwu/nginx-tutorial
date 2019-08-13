@@ -16,7 +16,7 @@
 
 反向代理（Reverse Proxy）方式是指以代理服务器来接受 internet 上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 internet 上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。
 
-<br><div align="center"><img src="https://gitee.com/turnon/images/raw/master/images/web/reverse-proxy.png"/></div><br>
+<br><div align="center"><img src="https://gitee.com/turnon/images/raw/master/images/web/nginx/reverse-proxy.png"/></div><br>
 
 ## Nginx 入门
 
@@ -237,6 +237,8 @@ http {
 但是，网站在实际运营过程中，大部分都是以集群的方式运行，这时需要使用负载均衡来分流。
 
 nginx 也可以实现简单的负载均衡功能。
+
+<br><div align="center"><img src="https://gitee.com/turnon/images/raw/master/images/web/nginx/nginx-load-balance.png"/></div><br>
 
 假设这样一个应用场景：将应用部署在 192.168.1.11:80、192.168.1.12:80、192.168.1.13:80 三台 linux 环境的服务器上。网站域名叫 www.helloworld.com，公网 IP 为 192.168.1.11。在公网 IP 所在的服务器上部署 nginx，对所有请求做负载均衡处理（下面例子中使用的是加权轮询策略）。
 
