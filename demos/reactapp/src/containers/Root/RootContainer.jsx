@@ -3,10 +3,10 @@
  * @author Zhang Peng
  * @see http://gaearon.github.io/react-hot-loader/getstarted/
  */
-if (process.env.NODE_ENV === "development") {
-  module.exports = require('./RootContainer.dev');
-  console.log('[development] Root.dev started.');
+if (process.env.NODE_ENV === 'development') {
+  module.exports = require('./RootContainer.dev')
+  console.log('[development] Root.dev started.')
 } else {
-  module.exports = require('./RootContainer.prod');
-  console.log('[production] Root.prod started.');
+  module.exports = require('./RootContainer.prod')
+  console.log('[production] Root.prod started.')
 }

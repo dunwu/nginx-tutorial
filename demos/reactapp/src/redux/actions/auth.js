@@ -1,11 +1,11 @@
-const webapi = require('../../webapi');
-import { FETCH_PROFILE, LOGIN, LOGOUT, UID_NOT_FOUND } from '../constants/authActionType';
+const webapi = require('../../webapi')
+import { FETCH_PROFILE, LOGIN, LOGOUT, UID_NOT_FOUND } from '../constants/authActionType'
 
 export const fetchProfile = () => {
-  let uid = window.localStorage.getItem('uid');
+  let uid = window.localStorage.getItem('uid')
 
   if (uid === undefined) {
-    return { type: UID_NOT_FOUND };
+    return { type: UID_NOT_FOUND }
   }
 
   return {
@@ -14,7 +14,7 @@ export const fetchProfile = () => {
       promise: webapi.get('/my')
     }
   }
-};
+}
 
 export const login = (username, password) => {
   return {
@@ -26,7 +26,7 @@ export const login = (username, password) => {
       })
     }
   }
-};
+}
 
 export const logout = () => {
   return {
@@ -35,4 +35,4 @@ export const logout = () => {
       promise: webapi.get('/logout')
     }
   }
-};
+}

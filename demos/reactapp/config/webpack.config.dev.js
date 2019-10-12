@@ -1,11 +1,11 @@
 /**
  * Created by Zhang Peng on 2017/6/14.
  */
-const path = require('path');
-const webpack = require('webpack');
-const webpackMerge = require('webpack-merge');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-const baseWebpackConfig = require('./webpack.config.base');
+const path = require('path')
+const webpack = require('webpack')
+const webpackMerge = require('webpack-merge')
+const OpenBrowserPlugin = require('open-browser-webpack-plugin')
+const baseWebpackConfig = require('./webpack.config.base')
 
 module.exports = webpackMerge(baseWebpackConfig, {
   // 这里应用程序开始执行
@@ -14,7 +14,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
   entry: {
     main: [
       // App 入口
-      path.resolve(__dirname, "../src/index"),
+      path.resolve(__dirname, '../src/index'),
 
       // 开启 React 代码的模块热替换(HMR)
       'react-hot-loader/patch',
@@ -25,13 +25,13 @@ module.exports = webpackMerge(baseWebpackConfig, {
 
       // 为热替换(HMR)打包好代码
       // only- 意味着只有成功更新运行代码才会执行热替换(HMR)
-      'webpack/hot/only-dev-server',
-    ],
+      'webpack/hot/only-dev-server'
+    ]
   },
 
   output: {
     // 对于热替换(HMR)是必须的，让 webpack 知道在哪里载入热更新的模块(chunk)
-    publicPath: "/",
+    publicPath: '/'
   },
 
   // 关于模块配置
@@ -48,7 +48,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
           limit: 10000,
           name: 'static/images/[name].[hash:8].[ext]'
         }
-      },
+      }
     ]
   },
 
@@ -68,8 +68,8 @@ module.exports = webpackMerge(baseWebpackConfig, {
 
     // 自动打开浏览器
     new OpenBrowserPlugin({
-      url: "http://localhost:9000"
-    }),
+      url: 'http://localhost:9000'
+    })
   ],
 
   // 通过在浏览器调试工具(browser devtools)中添加元信息(meta info)增强调试
@@ -78,16 +78,16 @@ module.exports = webpackMerge(baseWebpackConfig, {
   // devtool: "eval-source-map", // 将 SourceMap 嵌入到每个模块中
   // devtool: "hidden-source-map", // SourceMap 不在源文件中引用
   // devtool: "cheap-source-map", // 没有模块映射(module mappings)的 SourceMap 低级变体(cheap-variant)
-  devtool: "eval-source-map", // 有模块映射(module mappings)的 SourceMap 低级变体
+  devtool: 'eval-source-map', // 有模块映射(module mappings)的 SourceMap 低级变体
   // devtool: "eval", // 没有模块映射，而是命名模块。以牺牲细节达到最快。
 
   devServer: {
-    contentBase: [path.join(__dirname, "../dist")],
+    contentBase: [path.join(__dirname, '../dist')],
     compress: true,
     port: 9000, // 启动端口号
     hot: true, // 启用 webpack 的模块热替换特性
     inline: true,
-    publicPath: "/", // 和上文 output 的“publicPath”值保持一致
+    publicPath: '/', // 和上文 output 的“publicPath”值保持一致
     historyApiFallback: true
   }
-});
+})

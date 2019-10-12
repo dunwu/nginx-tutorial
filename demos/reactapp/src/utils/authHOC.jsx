@@ -5,8 +5,8 @@
  * @see https://zhuanlan.zhihu.com/p/24776678
  * @see https://segmentfault.com/a/1190000004598113
  */
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 /**
  * 校验方法
@@ -14,12 +14,12 @@ import { withRouter } from 'react-router-dom';
  * @param props {PropsType<S>} 组件的props
  */
 const validate = props => {
-  const { history } = props;
-  const isLoggedIn = !!window.localStorage.getItem("uid");
-  if (!isLoggedIn && history.location.pathname !== "/login") {
-    history.replace("/login");
+  const { history } = props
+  const isLoggedIn = !!window.localStorage.getItem('uid')
+  if (!isLoggedIn && history.location.pathname !== '/login') {
+    history.replace('/login')
   }
-};
+}
 
 /**
  * 对组件进行认证的方法
@@ -30,19 +30,20 @@ const validate = props => {
 const authHOC = WrappedComponent => {
   class Authenticate extends React.Component {
     componentWillMount() {
-      validate(this.props);
+      validate(this.props)
     }
 
     componentWillReceiveProps(nextProps) {
       if (nextProps.location !== this.props.location) {
-        validate(nextProps);
+        validate(nextProps)
       }
     }
 
     render() {
-      return <WrappedComponent {...this.props} />;
+      return <WrappedComponent {...this.props} />
     }
   }
-  return withRouter(Authenticate);
-};
-export default authHOC;
+
+  return withRouter(Authenticate)
+}
+export default authHOC

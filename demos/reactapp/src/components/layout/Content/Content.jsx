@@ -4,12 +4,12 @@
  * @see https://ant.design/components/layout-cn/
  * @see https://ant.design/components/card-cn/
  */
-import { Card, Layout } from 'antd';
-import React from 'react';
+import { Card, Layout } from 'antd'
+import React from 'react'
 
-import './Content.less';
+import './Content.less'
 
-const { Content } = Layout;
+const { Content } = Layout
 
 /**
  * 内容布局组件
@@ -30,4 +30,5 @@ class CustomContent extends React.PureComponent {
     )
   }
 }
-export default CustomContent;
+
+export default CustomContent

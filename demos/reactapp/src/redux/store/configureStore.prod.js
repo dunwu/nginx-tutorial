@@ -4,13 +4,13 @@
  * @see https://github.com/gaearon/redux-devtools/blob/master/docs/Walkthrough.md
  */
 
-import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
+import { applyMiddleware, createStore } from 'redux'
+import thunk from 'redux-thunk'
 
-import promise from '../middlewares/promiseMiddleware';
-import reducers from '../reducers';
+import promise from '../middlewares/promiseMiddleware'
+import reducers from '../reducers'
 
-const enhancer = applyMiddleware(thunk, promise);
+const enhancer = applyMiddleware(thunk, promise)
 
 /**
  * 生产环境的 Store 构造方法。
@@ -18,6 +18,7 @@ const enhancer = applyMiddleware(thunk, promise);
  * @returns {Store<S>} Redux 的状态容器，一个应用只有一个
  */
 function configureStore(initialState) {
-  return createStore(reducers, initialState, enhancer);
+  return createStore(reducers, initialState, enhancer)
 }
-export default configureStore;
+
+export default configureStore

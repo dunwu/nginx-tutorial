@@ -1,11 +1,11 @@
 /**
  * Created by Zhang Peng on 2017/6/14.
  */
-const path = require('path');
-const webpack = require('webpack');
-const webpackMerge = require('webpack-merge');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const baseWebpackConfig = require('./webpack.config.base');
+const path = require('path')
+const webpack = require('webpack')
+const webpackMerge = require('webpack-merge')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const baseWebpackConfig = require('./webpack.config.base')
 
 module.exports = webpackMerge(baseWebpackConfig, {
   // 这里应用程序开始执行
@@ -14,8 +14,8 @@ module.exports = webpackMerge(baseWebpackConfig, {
   entry: {
     main: [
       // App 入口
-      path.resolve(__dirname, "../src/index"),
-    ],
+      path.resolve(__dirname, '../src/index')
+    ]
   },
 
   // 关于模块配置
@@ -36,18 +36,18 @@ module.exports = webpackMerge(baseWebpackConfig, {
           },
 
           {
-            loader: "image-webpack-loader",
+            loader: 'image-webpack-loader',
             query: {
               progressive: true,
               pngquant: {
-                quality: "65-90",
+                quality: '65-90',
                 speed: 4
               }
             }
           }
 
         ]
-      },
+      }
     ]
   },
 
@@ -68,7 +68,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
     // 压缩 js 插件
     new webpack.optimize.UglifyJsPlugin({
       output: {
-        comments: false,  // remove all comments
+        comments: false  // remove all comments
       },
       compress: {
         warnings: false
@@ -76,6 +76,6 @@ module.exports = webpackMerge(baseWebpackConfig, {
     }),
 
     // 将样式文件独立打包
-    new ExtractTextPlugin("styles.css"),
-  ],
-});
+    new ExtractTextPlugin('styles.css')
+  ]
+})

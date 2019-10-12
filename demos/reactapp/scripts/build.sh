@@ -1,4 +1,5 @@
 #!/bin/bash
+
 ln -s /app/ck-puck-front/node_modules/ node_modules
 nvm use 8.1.0
 npm set registry http://192.168.51.44

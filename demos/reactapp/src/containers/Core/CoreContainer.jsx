@@ -3,14 +3,14 @@
  * @author Zhang Peng
  * @see https://ant.design/components/layout-cn/
  */
-import { Layout } from 'antd';
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Layout } from 'antd'
+import React from 'react'
+import { Redirect, Route } from 'react-router-dom'
 
-import './CoreContainer.less';
-import { authHOC } from '../../utils';
-import { ChildRoutes } from '../../routes';
-import { Content, Footer, Header, Sidebar } from '../../components';
+import './CoreContainer.less'
+import { authHOC } from '../../utils'
+import { ChildRoutes } from '../../routes'
+import { Content, Footer, Header, Sidebar } from '../../components'
 
 /**
  * 应用的核心容器组件
@@ -21,21 +21,22 @@ class CoreContainer extends React.PureComponent {
   render() {
     return (
       <Layout className="ant-layout-has-sider">
-        <Sidebar />
+        <Sidebar/>
         <Layout>
-          <Header />
+          <Header/>
           <Layout className="ant-layout-container">
             <Content>
-              <Redirect to="/pages/home" />
+              <Redirect to="/pages/home"/>
               {ChildRoutes.map((route, index) => (
-                <Route key={index} path={route.path} component={authHOC(route.component)} exactly={route.exactly} />
+                <Route key={index} path={route.path} component={authHOC(route.component)} exactly={route.exactly}/>
               ))}
             </Content>
           </Layout>
-          <Footer />
+          <Footer/>
         </Layout>
       </Layout>
-    );
+    )
   }
 }
-export default CoreContainer;
+
+export default CoreContainer

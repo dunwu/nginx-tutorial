@@ -8,15 +8,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * spring mvc 的第一个程序
+ *
  * @author Zhang Peng
  * @since 2016.07.29
  */
 @Controller
 @RequestMapping(value = "/hello")
 public class HelloController {
+
 	/**
-	 * <p>在本例中，Spring将会将数据传给 hello.jsp
-	 * <p>访问形式：http://localhost:8080/hello?name=张三
+	 * <p>
+	 * 在本例中，Spring将会将数据传给 hello.jsp
+	 * <p>
+	 * 访问形式：http://localhost:8080/hello?name=张三
 	 */
 	@RequestMapping(value = "/name", method = RequestMethod.GET)
 	public ModelAndView hello(@RequestParam("name") String name) {
@@ -25,4 +29,5 @@ public class HelloController {
 		mav.setViewName("hello");
 		return mav;
 	}
+
 }

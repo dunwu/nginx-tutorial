@@ -5,4 +5,4 @@
  * @author Zhang Peng
  */
 
-export { default as authHOC } from './authHOC';
+export { default as authHOC } from './authHOC'

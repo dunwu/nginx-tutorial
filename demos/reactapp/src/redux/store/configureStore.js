@@ -6,7 +6,7 @@
 // Use DefinePlugin (Webpack) or loose-envify (Browserify)
 // together with Uglify to strip the dev branch in prod build.
 if (process.env.NODE_ENV === 'development') {
-  module.exports = require('./configureStore.dev').default;
+  module.exports = require('./configureStore.dev').default
 } else {
-  module.exports = require('./configureStore.prod').default;
+  module.exports = require('./configureStore.prod').default
 }

@@ -20,6 +20,6 @@ module.exports = {
     /**
      * 服务器的host
      */
-    baseURL: '/api',
+    baseURL: '/api'
   }
-};
+}

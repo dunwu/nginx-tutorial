@@ -1,5 +1,5 @@
-const webapi = require('../../webapi');
-import { REFRESH_MENU, REFRESH_NAVPATH } from '../constants/menuActionType';
+const webapi = require('../../webapi')
+import { REFRESH_MENU, REFRESH_NAVPATH } from '../constants/menuActionType'
 
 export const refreshNavPath = (path, key) => {
   return {
@@ -9,7 +9,7 @@ export const refreshNavPath = (path, key) => {
       key: key
     }
   }
-};
+}
 
 export const refreshMenu = () => {
   return {
@@ -18,4 +18,4 @@ export const refreshMenu = () => {
       promise: webapi.get('/menu')
     }
   }
-};
+}

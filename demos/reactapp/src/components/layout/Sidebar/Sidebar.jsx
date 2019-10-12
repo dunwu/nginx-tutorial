@@ -3,19 +3,19 @@
  * @author Zhang Peng
  * @see https://ant.design/components/layout-cn/
  */
-import {Icon, Layout, Menu} from "antd";
-import PropTypes from "prop-types";
-import React from "react";
-import {connect} from "react-redux";
-import {matchPath, withRouter} from "react-router";
-import {Link} from "react-router-dom";
-import {bindActionCreators} from "redux";
+import { Icon, Layout, Menu } from 'antd'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { connect } from 'react-redux'
+import { matchPath, withRouter } from 'react-router'
+import { Link } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
 
-import "./Sidebar.less";
-import logoImg from "./antd.svg";
-import {refreshMenu, refreshNavPath} from "../../../redux/actions/menu";
+import './Sidebar.less'
+import logoImg from './antd.svg'
+import { refreshMenu, refreshNavPath } from '../../../redux/actions/menu'
 
-const {Sider} = Layout;
+const { Sider } = Layout
 
 const isActive = (path, history) => {
   return matchPath(path, {
@@ -23,7 +23,7 @@ const isActive = (path, history) => {
     exact: true,
     strict: false
   })
-};
+}
 
 /**
  * 侧边导航栏组件。侧边栏采用的响应式布局方式，页面大小收缩到一定程度，侧边栏会隐藏。
@@ -32,16 +32,16 @@ const isActive = (path, history) => {
 class CustomSidebar extends React.PureComponent {
   static propTypes = {
     items: PropTypes.array
-  };
+  }
   static defaultProps = {
     items: []
-  };
+  }
 
   state = {
-    openKey: "sub0",
-    activeKey: "menu0",
-    mode: 'inline',
-  };
+    openKey: 'sub0',
+    activeKey: 'menu0',
+    mode: 'inline'
+  }
 
   componentDidMount() {
     this.props.getAllMenu()
@@ -57,68 +57,68 @@ class CustomSidebar extends React.PureComponent {
           })
         }
       })
-    });
+    })
   }
 
   menuClickHandle = (item) => {
     this.setState({
       activeKey: item.key
-    });
+    })
     this.props.updateNavPath(item.keyPath, item.key)
-  };
+  }
 
   render() {
-    const {items, history} = this.props;
-    let {activeKey, openKey} = this.state;
+    const { items, history } = this.props
+    let { activeKey, openKey } = this.state
 
     const _menuProcess = (nodes, pkey) => {
       return Array.isArray(nodes) && nodes.map((item, i) => {
-          const menu = _menuProcess(item.children, item.key);
-          if (item.url && isActive(item.url, history)) {
-            activeKey = 'menu' + item.key;
-            openKey = 'sub' + pkey
-          }
+        const menu = _menuProcess(item.children, item.key)
+        if (item.url && isActive(item.url, history)) {
+          activeKey = 'menu' + item.key
+          openKey = 'sub' + pkey
+        }
 
-          switch (item.type) {
+        switch (item.type) {
 
-            case 'SubMenu':
-              return (
-                <Menu.SubMenu
-                  key={item.key}
-                  title={<span><Icon type={item.icon}/><span className="nav-text">{item.title}</span></span>}
-                >
-                  {menu}
-                </Menu.SubMenu>
-              );
-            case 'ItemGroup':
-              return (
-                <Menu.ItemGroup
-                  key={item.key}
-                  title={<span><Icon type={item.icon}/><span className="nav-text">{item.title}</span></span>}
-                >
-                  {menu}
-                </Menu.ItemGroup>
-              );
-            case 'Divider':
-              return (
-                <Menu.Divider key={item.key} />
-              );
-            case 'Item':
-            default:
-              return (
-                <Menu.Item className="ant-menu-item" key={item.key}>
-                  {
-                    item.url ? <Link to={item.url}>{item.icon && <Icon type={item.icon}/>}{item.title}</Link> :
-                      <span>{item.icon && <Icon type={item.icon}/>}{item.title}</span>
-                  }
-                </Menu.Item>
-              );
-              break;
-          }
-        });
-    };
+          case 'SubMenu':
+            return (
+              <Menu.SubMenu
+                key={item.key}
+                title={<span><Icon type={item.icon}/><span className="nav-text">{item.title}</span></span>}
+              >
+                {menu}
+              </Menu.SubMenu>
+            )
+          case 'ItemGroup':
+            return (
+              <Menu.ItemGroup
+                key={item.key}
+                title={<span><Icon type={item.icon}/><span className="nav-text">{item.title}</span></span>}
+              >
+                {menu}
+              </Menu.ItemGroup>
+            )
+          case 'Divider':
+            return (
+              <Menu.Divider key={item.key}/>
+            )
+          case 'Item':
+          default:
+            return (
+              <Menu.Item className="ant-menu-item" key={item.key}>
+                {
+                  item.url ? <Link to={item.url}>{item.icon && <Icon type={item.icon}/>}{item.title}</Link> :
+                    <span>{item.icon && <Icon type={item.icon}/>}{item.title}</span>
+                }
+              </Menu.Item>
+            )
+            break
+        }
+      })
+    }
 
-    const menu = _menuProcess(items);
+    const menu = _menuProcess(items)
 
     return (
       /**
