@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Server port="${tomcat.server.shutdownPort}" shutdown="SHUTDOWN">
+	<Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
+	<Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
+
+	<Service name="Catalina">
+
+		<Executor name="tomcatThreadPool" namePrefix="catalina-exec-"
+							maxThreads="300" minSpareThreads="25"/>
+
+		<Connector port="${tomcat.connector.port}" protocol="HTTP/1.1" connectionTimeout="30000" acceptCount="500"
+							 executor="tomcatThreadPool"
+							 processorCache="300" bindOnInit="false"/>
+
+		<Engine name="localhost" defaultHost="localhost">
+			<Host name="localhost" createDirs="false" appBase="${tomcat.host.appBase}" unpackWARs="false"
+						autoDeploy="false"
+						deployOnStartup="false" failCtxIfServletStartFails="true">
+				<Context path="${tomcat.context.path}" docBase="${tomcat.context.docBase}" reloadable="false"
+								 logEffectiveWebXml="false"
+								 privileged="false"
+								 swallowOutput="false" workDir="${catalina.base}/work">
+					<JarScanner>
+						<JarScanFilter pluggabilitySkip="*.jar" pluggabilityScan=""
+													 defaultPluggabilityScan="true" tldSkip="*.jar"
+													 tldScan="" defaultTldScan="true"/>
+					</JarScanner>
+				</Context>
+			</Host>
+		</Engine>
+	</Service>
+</Server>
+
