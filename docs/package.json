@@ -1,5 +1,5 @@
 {
-  "name": "NginxTutorial",
+  "name": "nginx-tutorial",
   "version": "1.0.0",
   "scripts": {
     "start": "docsify serve ./  --port 4000"

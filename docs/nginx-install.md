@@ -1,14 +1,16 @@
 # Nginx 安装
 
-<!-- TOC depthFrom:2 depthTo:3 -->
+<!-- TOC depthfrom:2 depthto:3 -->
 
 - [Windows 安装](#windows-安装)
 - [Linux 安装](#linux-安装)
-    - [rpm 包方式（推荐）](#rpm-包方式推荐)
-    - [源码编译方式](#源码编译方式)
+  - [rpm 包方式（推荐）](#rpm-包方式推荐)
+  - [源码编译方式](#源码编译方式)
+    - [安装编译工具及库文件](#安装编译工具及库文件)
+    - [安装 Nginx](#安装-nginx)
 - [Linux 开机自启动](#linux-开机自启动)
-    - [rpm 包方式](#rpm-包方式)
-    - [源码编译方式](#源码编译方式-1)
+  - [rpm 包方式](#rpm-包方式)
+  - [源码编译方式](#源码编译方式)
 - [脚本](#脚本)
 - [参考资料](#参考资料)
 
@@ -28,7 +30,7 @@
 
 下面以 C 盘根目录为例说明下：
 
-```
+```bash
 cd C:
 cd C:\nginx-0.8.54 start nginx
 ```
@@ -41,7 +43,7 @@ cd C:\nginx-0.8.54 start nginx
 
 （1）进入[下载页面](http://nginx.org/packages/)，选择合适版本下载。
 
-```sh
+```bash
 $ wget http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 ```
 
@@ -49,19 +51,19 @@ $ wget http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.e
 
 nginx rpm 包实际上安装的是 nginx 的 yum 源。
 
-```
+```bash
 $ rpm -ivh nginx-*.rpm
 ```
 
 （3）正式安装 rpm 包
 
-```
+```bash
 $ yum install nginx
 ```
 
 （4）关闭防火墙
 
-```sh
+```bash
 $ firewall-cmd --zone=public --add-port=80/tcp --permanent
 $ firewall-cmd --reload
 ```
@@ -72,7 +74,7 @@ $ firewall-cmd --reload
 
 Nginx 源码的编译依赖于 gcc 以及一些库文件，所以必须提前安装。
 
-```sh
+```bash
 $ yum -y install make zlib zlib-devel gcc-c++ libtool  openssl openssl-devel
 ```
 
@@ -84,7 +86,7 @@ Nginx 依赖 pcre 库，安装步骤如下：
 
 我选择的是 8.35 版本：
 
-```
+```bash
 wget -O /opt/pcre/pcre-8.35.tar.gz http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre-8.35.tar.gz
 cd /opt/pcre
 tar zxvf pcre-8.35.tar.gz
@@ -94,7 +96,7 @@ tar zxvf pcre-8.35.tar.gz
 
 执行以下命令：
 
-```
+```bash
 cd /opt/pcre/pcre-8.35
 ./configure
 make && make install
@@ -114,7 +116,7 @@ make && make install
 
 我选择的是 1.12.2 版本：http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre-8.35.tar.gz
 
-```
+```bash
 wget -O /opt/nginx/nginx-1.12.2.tar.gz http://nginx.org/download/nginx-1.12.2.tar.gz
 cd /opt/nginx
 tar zxvf nginx-1.12.2.tar.gz
@@ -124,14 +126,14 @@ tar zxvf nginx-1.12.2.tar.gz
 
 执行以下命令：
 
-```
+```bash
 cd /opt/nginx/nginx-1.12.2
 ./configure --with-http_stub_status_module --with-http_ssl_module --with-pcre=/opt/pcre/pcre-8.35
 ```
 
 （3）关闭防火墙
 
-```sh
+```bash
 $ firewall-cmd --zone=public --add-port=80/tcp --permanent
 $ firewall-cmd --reload
 ```
@@ -154,7 +156,7 @@ Centos7 以上是用 Systemd 进行系统初始化的，Systemd 是 Linux 系统
 
 直接用命令：
 
-```sh
+```bash
 $ systemctl enable nginx.service
 ```
 

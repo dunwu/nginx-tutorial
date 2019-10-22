@@ -9,7 +9,7 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     name="viewport"
   />
-  <link href="http://dunwu.test.upcdn.net/images/others/zp_50_50.png" rel="icon" type="image/x-icon"/>
+  <link href="http://dunwu.test.upcdn.net/common/logo/zp_50_50.png" rel="icon" type="image/x-icon"/>
   <link href="//unpkg.com/docsify/lib/themes/vue.css" rel="stylesheet" title="vue"/>
   <style>
     h1 + ul {
@@ -103,10 +103,6 @@
         background-position: -100% 0;
       }
     }
-
-    /*.cover-main {*/
-    /*text-shadow: 2px 2px 5px grey;*/
-    /*}*/
 
     .content h1 a,
     .content h1 span {
@@ -220,7 +216,7 @@
   window.$docsify = {
     name: 'Nginx Tutorial',
     repo: 'https://github.com/dunwu/nginx-tutorial',
-    logo: 'http://dunwu.test.upcdn.net/images/others/zp_100_100.png',
+    logo: 'http://dunwu.test.upcdn.net/common/logo/zp_100_100.png',
     auto2top: true,
     coverpage: 'coverpage.md',
     maxLevel: 4,
@@ -241,10 +237,12 @@
 <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
 
 <!--代码高亮-->
-<!--@see https://github.com/PrismJS/prism/tree/gh-pages/components-->
+<!--@see https://github.com/PrismJS/prism -->
 <script src="//unpkg.com/prismjs/components/prism-basic.min.js"></script>
 <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+<script src="//unpkg.com/prismjs/components/prism-batch.min.js"></script>
 <script src="//unpkg.com/prismjs/components/prism-nginx.min.js"></script>
 <script src="//unpkg.com/prismjs/components/prism-markdown.min.js"></script>
+<script src="//unpkg.com/prismjs/components/prism-vim.min.js"></script>
 </body>
 </html>
