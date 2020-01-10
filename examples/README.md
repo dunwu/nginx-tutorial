@@ -91,7 +91,7 @@ nginx-1.14.0 是 Nginx 的 windows 环境的 1.14.0 官方版本。之所以把�
 2.  配置 hosts：`127.0.0.1 www.demo01.com`
 3.  在浏览器中访问：www.demo01.com
 
-<br><div align="center"><img src="images\nginx-demo01.png"/></div><br>
+![img](images\nginx-demo01.png)
 
 ### Demo02 - 负载均衡示例
 
@@ -111,7 +111,7 @@ nginx-1.14.0 是 Nginx 的 windows 环境的 1.14.0 官方版本。之所以把�
 
 如图所示：三次访问的端口号各不相同，说明三个服务器各自均有不同机率（基于权重）被访问。
 
-<br><div align="center"><img src="images\nginx-demo02.png"/></div><br>
+![img](images\nginx-demo02.png)
 
 ### Demo03 - 多 webapp 示例
 
@@ -137,7 +137,7 @@ Nginx 配置文件：[demo03.conf](nginx-1.14.0/conf/conf.d/demo03.conf)
 
 如图所示：三次访问的 context 和端口号各不相同。说明 Nginx 根据不同的 context 将请求分发到指定的服务器上。
 
-<br><div align="center"><img src="images\nginx-demo03.png"/></div><br>
+![img](images\nginx-demo03.png)
 
 ### Demo04 - 前后端分离示例
 
@@ -169,11 +169,11 @@ Nginx 配置文件：[demo04.conf](nginx-1.14.0/conf/conf.d/demo04.conf)
 
 效果图：
 
-<br><div align="center"><img src="images\nginx-demo04.png"/></div><br>
+![img](images\nginx-demo04.png)
 
 按 F12 打开浏览器控制台，输入用户名/密码（admin/123456）执行登录操作。如下图所示，可以看到登录后的访问请求被转发到了 Nginx 配置的服务器地址。
 
-<br><div align="center"><img src="<images\nginx-demo04(2"/></div><br>
+![img](<images\nginx-demo04(2)
 
 ### Demo05 - 配置文件服务器示例
 
@@ -199,7 +199,7 @@ Nginx 配置文件：[demo05.conf](nginx-1.14.0/conf/conf.d/demo05.conf)
 
 效果图如下：
 
-<br><div align="center"><img src="images\nginx-demo05.png"/></div><br>
+![img](images\nginx-demo05.png)
 
 ### Demo06 - 静态站点示例
 
@@ -220,4 +220,4 @@ Nginx 中的配置要点：
 
 效果图如下：
 
-<br><div align="center"><img src="images\nginx-demo06.png"/></div><br>
+![img](images\nginx-demo06.png)

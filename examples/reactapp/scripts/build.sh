@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ln -s /app/ck-puck-front/node_modules/ node_modules
 nvm use 8.1.0

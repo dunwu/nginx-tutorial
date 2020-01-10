@@ -1,57 +1,57 @@
 # Nginx 极简教程
 
-> **Nginx 是一个开源的 HTTP 和反向代理服务器，一个邮件代理服务器以及一个通用的 TCP / UDP 代理服务器**。
->
 > 本项目是一个 Nginx 极简教程，目的在于帮助新手快速入门 Nginx。
 >
 > [**examples**](https://github.com/dunwu/nginx-tutorial/tree/master/examples) 目录中的示例模拟了工作中的一些常用实战场景，并且都可以通过脚本一键式启动，让您可以快速看到演示效果。
 
-## 简介
+<!-- TOC depthFrom:2 depthTo:3 -->
 
-### 什么是 Nginx?
+- [一、Nginx 简介](#一nginx-简介)
+- [二、Nginx 入门](#二nginx-入门)
+- [三、Nginx 实战](#三nginx-实战)
+  - [Http 反向代理](#http-反向代理)
+  - [Https 反向代理](#https-反向代理)
+  - [负载均衡](#负载均衡)
+  - [网站有多个 webapp 的配置](#网站有多个-webapp-的配置)
+  - [静态站点](#静态站点)
+  - [搭建文件服务器](#搭建文件服务器)
+  - [解决跨域](#解决跨域)
+- [资源](#资源)
 
-Nginx 是一种快速、轻巧且功能强大的 Web 服务器，也可以用作：
+<!-- /TOC -->
 
-- 快速 HTTP 反向代理
-- 可靠的负载均衡器
-- 高性能缓存服务器
-- 完善的网络平台
+## 一、Nginx 简介
 
-### Nginx 模块化结构
+**什么是 Nginx?**
 
-Nginx 有一个主进程和几个工作进程。**主流程的主要目的是读取和评估配置，以及维护工作流程**。**工作进程对请求进行实际处理**。Nginx 使用基于事件的模型和依赖于操作系统的机制来有效地在工作进程之间分配请求。
+**Nginx (engine x)** 是一款轻量级的 Web 服务器 、反向代理服务器及电子邮件（IMAP/POP3）代理服务器。
 
-Nginx 服务完全遵循模块化设计思想。
+![img](http://dunwu.test.upcdn.net/cs/web/nginx/nginx.jpg!zp)
 
-<br><div align="center"><img src="http://dunwu.test.upcdn.net/cs/web/nginx/nginx.jpg!zp"/></div><br>
-
-### 什么是反向代理？
+**什么是反向代理？**
 
 反向代理（Reverse Proxy）方式是指以代理服务器来接受 internet 上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 internet 上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。
 
-<br><div align="center"><img src="http://dunwu.test.upcdn.net/cs/web/nginx/reverse-proxy.png!zp"/></div><br>
+![img](http://dunwu.test.upcdn.net/cs/web/nginx/reverse-proxy.png!zp)
 
-## Nginx 命令
+## 二、Nginx 入门
 
-> 详细安装方法请参考：[Nginx 安装](nginx-install.md)
+> 详细安装方法请参考：[Nginx 安装](docs/nginx-install.md)
 
 nginx 的使用比较简单，就是几条命令。
 
 常用到的命令如下：
 
-- `nginx -h` - 显示帮助
-- `nginx -v` - 显示 Nginx 的版本
-- `nginx -V` - 显示 Nginx 的版本，编译器版本和配置参数。
-- `nginx -t` - 测试 Nginx 配置
-- `nginx -c <文件名>` - 设置配置文件（默认：`/etc/nginx/nginx.conf`）
-- `nginx -p <目录>` - 设置前缀路径（默认值：`/etc/nginx/`）
-- `nginx -T` - 测试 Nginx 配置并在屏幕上打印经过验证的配置
-- `nginx -s <signal>` - 向 Nginx 主进程发送信号：
-  - `stop` - 快速关闭 Nginx，可能不保存相关信息，并迅速终止 web 服务
-  - `quit` - 平稳关闭 Nginx，保存相关信息，有安排的结束 web 服务
-  - `reload` - 重新加载配置而不停止进程
-  - `reopen` - 重新打开日志文件
-- `nginx -g <指令>` - 将全局指令设置为超出配置文件
+```batch
+nginx -s stop       快速关闭Nginx，可能不保存相关信息，并迅速终止web服务。
+nginx -s quit       平稳关闭Nginx，保存相关信息，有安排的结束web服务。
+nginx -s reload     因改变了Nginx相关配置，需要重新加载配置而重载。
+nginx -s reopen     重新打开日志文件。
+nginx -c filename   为 Nginx 指定一个配置文件，来代替缺省的。
+nginx -t            不运行，仅仅测试配置文件。nginx 将检查配置文件的语法的正确性，并尝试打开配置文件中所引用到的文件。
+nginx -v            显示 nginx 的版本。
+nginx -V            显示 nginx 的版本，编译器版本和配置参数。
+```
 
 如果不想每次都敲命令，可以在 nginx 安装目录下新添一个启动批处理文件**startup.bat**，双击即可运行。内容如下：
 
@@ -72,7 +72,7 @@ nginx.exe -c conf/nginx.conf
 
 如果是运行在 Linux 下，写一个 shell 脚本，大同小异。
 
-## Nginx 实战
+## 三、Nginx 实战
 
 我始终认为，各种开发工具的配置还是结合实战来讲述，会让人更易理解。
 
@@ -196,15 +196,15 @@ http {
 
 好了，让我们来试试吧：
 
-1. 启动 webapp，注意启动绑定的端口要和 nginx 中的 `upstream` 设置的端口保持一致。
-2. 更改 host：在 C:\Windows\System32\drivers\etc 目录下的 host 文件中添加一条 DNS 记录
+1.  启动 webapp，注意启动绑定的端口要和 nginx 中的 `upstream` 设置的端口保持一致。
+2.  更改 host：在 C:\Windows\System32\drivers\etc 目录下的 host 文件中添加一条 DNS 记录
 
 ```
 127.0.0.1 www.helloworld.com
 ```
 
-3. 启动前文中 startup.bat 的命令
-4. 在浏览器中访问 www.helloworld.com，不出意外，已经可以访问了。
+3.  启动前文中 startup.bat 的命令
+4.  在浏览器中访问 www.helloworld.com，不出意外，已经可以访问了。
 
 ### Https 反向代理
 
@@ -253,7 +253,7 @@ http {
 
 nginx 也可以实现简单的负载均衡功能。
 
-<br><div align="center"><img src="http://dunwu.test.upcdn.net/cs/web/nginx/nginx-load-balance.png!zp"/></div><br>
+![](http://dunwu.test.upcdn.net/cs/web/nginx/nginx-load-balance.png!zp)
 
 假设这样一个应用场景：将应用部署在 192.168.1.11:80、192.168.1.12:80、192.168.1.13:80 三台 linux 环境的服务器上。网站域名叫 www.helloworld.com，公网 IP 为 192.168.1.11。在公网 IP 所在的服务器上部署 nginx，对所有请求做负载均衡处理（下面例子中使用的是加权轮询策略）。
 
@@ -314,7 +314,7 @@ http {
 
 Nginx 提供了多种负载均衡策略，让我们来一一了解一下：
 
-负载均衡策略在各种分布式系统中基本上原理一致，对于原理有兴趣，不妨参考 [负载均衡](https://dunwu.github.io/javaweb/#/theory/load-balance)
+负载均衡策略在各种分布式系统中基本上原理一致，对于原理有兴趣，不妨参考 [负载均衡](https://dunwu.github.io/blog/design/theory/load-balance-theory/)
 
 ##### 轮询
 
@@ -526,11 +526,11 @@ web 领域开发中，经常采用前后端分离模式。这种模式下，前�
 
 各自独立的 web app 在互相访问时，势必存在跨域问题。解决跨域问题一般有两种思路：
 
-1. **CORS**
+1.  **CORS**
 
 在后端服务器设置 HTTP 响应头，把你需要允许访问的域名加入 `Access-Control-Allow-Origin` 中。
 
-2. **jsonp**
+2.  **jsonp**
 
 把后端根据请求，构造 json 数据，并返回，前端用 jsonp 跨域。
 
@@ -608,9 +608,9 @@ server {
 
 到此，就完成了。
 
-## 参考
+## 资源
 
 - [Nginx 的中文维基](http://tool.oschina.net/apidocs/apidoc?api=nginx-zh)
 - [Nginx 开发从入门到精通](http://tengine.taobao.org/book/index.html)
-- https://github.com/trimstray/nginx-admins-handbook
+- [nginx-admins-handbook](https://github.com/trimstray/nginx-admins-handbook)
 - [nginxconfig.io](https://nginxconfig.io/) - 一款 Nginx 配置生成器

@@ -4,21 +4,37 @@
 >
 > [**examples**](https://github.com/dunwu/nginx-tutorial/tree/master/examples) 目录中的示例模拟了工作中的一些常用实战场景，并且都可以通过脚本一键式启动，让您可以快速看到演示效果。
 
-## 简介
+<!-- TOC depthFrom:2 depthTo:3 -->
+
+- [一、Nginx 简介](#一nginx-简介)
+- [二、Nginx 入门](#二nginx-入门)
+- [三、Nginx 实战](#三nginx-实战)
+  - [Http 反向代理](#http-反向代理)
+  - [Https 反向代理](#https-反向代理)
+  - [负载均衡](#负载均衡)
+  - [网站有多个 webapp 的配置](#网站有多个-webapp-的配置)
+  - [静态站点](#静态站点)
+  - [搭建文件服务器](#搭建文件服务器)
+  - [解决跨域](#解决跨域)
+- [资源](#资源)
+
+<!-- /TOC -->
+
+## 一、Nginx 简介
 
 **什么是 Nginx?**
 
 **Nginx (engine x)** 是一款轻量级的 Web 服务器 、反向代理服务器及电子邮件（IMAP/POP3）代理服务器。
 
-<br><div align="center"><img src="http://dunwu.test.upcdn.net/cs/web/nginx/nginx.jpg!zp"/></div><br>
+![img](http://dunwu.test.upcdn.net/cs/web/nginx/nginx.jpg!zp)
 
 **什么是反向代理？**
 
 反向代理（Reverse Proxy）方式是指以代理服务器来接受 internet 上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 internet 上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。
 
-<br><div align="center"><img src="http://dunwu.test.upcdn.net/cs/web/nginx/reverse-proxy.png!zp"/></div><br>
+![img](http://dunwu.test.upcdn.net/cs/web/nginx/reverse-proxy.png!zp)
 
-## Nginx 入门
+## 二、Nginx 入门
 
 > 详细安装方法请参考：[Nginx 安装](docs/nginx-install.md)
 
@@ -56,7 +72,7 @@ nginx.exe -c conf/nginx.conf
 
 如果是运行在 Linux 下，写一个 shell 脚本，大同小异。
 
-## Nginx 实战
+## 三、Nginx 实战
 
 我始终认为，各种开发工具的配置还是结合实战来讲述，会让人更易理解。
 
@@ -237,7 +253,7 @@ http {
 
 nginx 也可以实现简单的负载均衡功能。
 
-<br><div align="center"><img src="http://dunwu.test.upcdn.net/cs/web/nginx/nginx-load-balance.png!zp"/></div><br>
+![](http://dunwu.test.upcdn.net/cs/web/nginx/nginx-load-balance.png!zp)
 
 假设这样一个应用场景：将应用部署在 192.168.1.11:80、192.168.1.12:80、192.168.1.13:80 三台 linux 环境的服务器上。网站域名叫 www.helloworld.com，公网 IP 为 192.168.1.11。在公网 IP 所在的服务器上部署 nginx，对所有请求做负载均衡处理（下面例子中使用的是加权轮询策略）。
 
@@ -298,7 +314,7 @@ http {
 
 Nginx 提供了多种负载均衡策略，让我们来一一了解一下：
 
-负载均衡策略在各种分布式系统中基本上原理一致，对于原理有兴趣，不妨参考 [负载均衡](https://dunwu.github.io/javaweb/#/theory/load-balance)
+负载均衡策略在各种分布式系统中基本上原理一致，对于原理有兴趣，不妨参考 [负载均衡](https://dunwu.github.io/blog/design/theory/load-balance-theory/)
 
 ##### 轮询
 
@@ -592,9 +608,9 @@ server {
 
 到此，就完成了。
 
-## 参考
+## 资源
 
 - [Nginx 的中文维基](http://tool.oschina.net/apidocs/apidoc?api=nginx-zh)
 - [Nginx 开发从入门到精通](http://tengine.taobao.org/book/index.html)
-- https://github.com/trimstray/nginx-admins-handbook
+- [nginx-admins-handbook](https://github.com/trimstray/nginx-admins-handbook)
 - [nginxconfig.io](https://nginxconfig.io/) - 一款 Nginx 配置生成器

@@ -1,16 +1,14 @@
 # Nginx 安装
 
-<!-- TOC depthfrom:2 depthto:3 -->
+<!-- TOC depthFrom:2 depthTo:3 -->
 
 - [Windows 安装](#windows-安装)
 - [Linux 安装](#linux-安装)
   - [rpm 包方式（推荐）](#rpm-包方式推荐)
   - [源码编译方式](#源码编译方式)
-    - [安装编译工具及库文件](#安装编译工具及库文件)
-    - [安装 Nginx](#安装-nginx)
 - [Linux 开机自启动](#linux-开机自启动)
   - [rpm 包方式](#rpm-包方式)
-  - [源码编译方式](#源码编译方式)
+  - [源码编译方式](#源码编译方式-1)
 - [脚本](#脚本)
 - [参考资料](#参考资料)
 
@@ -20,11 +18,11 @@
 
 （1）进入[官方下载地址](https://nginx.org/en/download.html)，选择合适版本（nginx/Windows-xxx）。
 
-<br><div align="center"><img src="http://dunwu.test.upcdn.net/snap/20180920181023092347.png"/></div><br>
+![img](http://dunwu.test.upcdn.net/snap/20180920181023092347.png)
 
 （2）解压到本地
 
-<br><div align="center"><img src="http://dunwu.test.upcdn.net/snap/20180920181023092044.png"/></div><br>
+![img](http://dunwu.test.upcdn.net/snap/20180920181023092044.png)
 
 （3）启动
 
@@ -144,7 +142,7 @@ $ firewall-cmd --reload
 
 启动后，访问站点：
 
-<br><div align="center"><img src="http://dunwu.test.upcdn.net/snap/20180920181016133223.png"/></div><br>
+![img](http://dunwu.test.upcdn.net/snap/20180920181016133223.png)
 
 ## Linux 开机自启动
 
@@ -168,7 +166,28 @@ $ systemctl enable nginx.service
 
 ## 脚本
 
-| [安装脚本](https://github.com/dunwu/linux-tutorial/tree/master/codes/linux/soft) |
+> CentOS7 环境安装脚本：[软件运维配置脚本集合](https://github.com/dunwu/linux-tutorial/tree/master/codes/linux/soft)
+
+**安装说明**
+
+- 采用编译方式安装 Nginx, 并将其注册为 systemd 服务
+- 安装路径为：`/usr/local/nginx`
+- 默认下载安装 `1.16.0` 版本
+
+**使用方法**
+
+- 默认安装 - 执行以下任意命令即可：
+
+```sh
+curl -o- https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/nginx-install.sh | bash
+wget -qO- https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/nginx-install.sh | bash
+```
+
+- 自定义安装 - 下载脚本到本地，并按照以下格式执行：
+
+```bash
+sh nginx-install.sh [version]
+```
 
 ## 参考资料
 
