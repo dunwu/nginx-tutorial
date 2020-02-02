@@ -1,4 +1,4 @@
-# Nginx 安装
+# Nginx 运维
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
@@ -14,7 +14,9 @@
 
 <!-- /TOC -->
 
-## Windows 安装
+## 一、普通安装
+
+### Windows 安装
 
 （1）进入[官方下载地址](https://nginx.org/en/download.html)，选择合适版本（nginx/Windows-xxx）。
 
@@ -35,9 +37,9 @@ cd C:\nginx-0.8.54 start nginx
 
 > 注：Nginx / Win32 是运行在一个控制台程序，而非 windows 服务方式的。服务器方式目前还是开发尝试中。
 
-## Linux 安装
+### Linux 安装
 
-### rpm 包方式（推荐）
+#### rpm 包方式（推荐）
 
 （1）进入[下载页面](http://nginx.org/packages/)，选择合适版本下载。
 
@@ -66,9 +68,9 @@ $ firewall-cmd --zone=public --add-port=80/tcp --permanent
 $ firewall-cmd --reload
 ```
 
-### 源码编译方式
+#### 源码编译方式
 
-#### 安装编译工具及库文件
+##### 安装编译工具及库
 
 Nginx 源码的编译依赖于 gcc 以及一些库文件，所以必须提前安装。
 
@@ -104,7 +106,7 @@ make && make install
 
 执行 `pcre-config --version` 命令。
 
-#### 安装 Nginx
+##### 编译安装 Nginx
 
 安装步骤如下：
 
@@ -144,11 +146,11 @@ $ firewall-cmd --reload
 
 ![img](http://dunwu.test.upcdn.net/snap/20180920181016133223.png)
 
-## Linux 开机自启动
+#### Linux 开机自启动
 
 Centos7 以上是用 Systemd 进行系统初始化的，Systemd 是 Linux 系统中最新的初始化系统（init），它主要的设计目标是克服 sysvinit 固有的缺点，提高系统的启动速度。Systemd 服务文件以 .service 结尾。
 
-### rpm 包方式
+##### rpm 包方式
 
 如果是通过 rpm 包安装的，会自动创建 nginx.service 文件。
 
@@ -160,9 +162,18 @@ $ systemctl enable nginx.service
 
 设置开机启动即可。
 
-### 源码编译方式
+##### 源码编译方式
 
 如果采用源码编译方式，需要手动创建 nginx.service 文件。
+
+## 二、Docker 安装
+
+- 官网镜像：https://hub.docker.com/_/nginx/
+- 下载镜像：`docker pull nginx`
+- 启动容器：`docker run --name my-nginx -p 80:80 -v /data/docker/nginx/logs:/var/log/nginx -v /data/docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro -d nginx`
+- 重新加载配置（目前测试无效，只能重启服务）：`docker exec -it my-nginx nginx -s reload`
+- 停止服务：`docker exec -it my-nginx nginx -s stop` 或者：`docker stop my-nginx`
+- 重新启动服务：`docker restart my-nginx`
 
 ## 脚本
 
@@ -192,3 +203,4 @@ sh nginx-install.sh [version]
 ## 参考资料
 
 - http://www.dohooe.com/2016/03/03/352.html?utm_source=tuicool&utm_medium=referral
+- [nginx+keepalived实现nginx双主高可用的负载均衡](https://blog.51cto.com/kling/1253474)

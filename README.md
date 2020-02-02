@@ -36,7 +36,7 @@
 
 ## 二、Nginx 入门
 
-> 详细安装方法请参考：[Nginx 安装](docs/nginx-install.md)
+> 详细安装方法请参考：[Nginx 运维](docs/nginx-ops.md)
 
 nginx 的使用比较简单，就是几条命令。
 
