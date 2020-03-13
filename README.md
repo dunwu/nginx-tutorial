@@ -82,7 +82,7 @@ nginx.exe -c conf/nginx.conf
 
 `nginx.conf` 配置文件如下：
 
-> **_注：`conf/nginx.conf` 是 nginx 的默认配置文件。你也可以使用 nginx -c 指定你的配置文件_**
+> ***注：`conf/nginx.conf` 是 nginx 的默认配置文件。你也可以使用 nginx -c 指定你的配置文件***
 
 ```nginx
 #运行用户
@@ -253,7 +253,7 @@ http {
 
 nginx 也可以实现简单的负载均衡功能。
 
-![](http://dunwu.test.upcdn.net/cs/web/nginx/nginx-load-balance.png!zp)
+![img](http://dunwu.test.upcdn.net/cs/web/nginx/nginx-load-balance.png!zp)
 
 假设这样一个应用场景：将应用部署在 192.168.1.11:80、192.168.1.12:80、192.168.1.13:80 三台 linux 环境的服务器上。网站域名叫 www.helloworld.com，公网 IP 为 192.168.1.11。在公网 IP 所在的服务器上部署 nginx，对所有请求做负载均衡处理（下面例子中使用的是加权轮询策略）。
 

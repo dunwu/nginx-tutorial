@@ -129,6 +129,7 @@ tar zxvf nginx-1.12.2.tar.gz
 ```bash
 cd /opt/nginx/nginx-1.12.2
 ./configure --with-http_stub_status_module --with-http_ssl_module --with-pcre=/opt/pcre/pcre-8.35
+make && make install
 ```
 
 （3）关闭防火墙
@@ -175,7 +176,7 @@ $ systemctl enable nginx.service
 - 停止服务：`docker exec -it my-nginx nginx -s stop` 或者：`docker stop my-nginx`
 - 重新启动服务：`docker restart my-nginx`
 
-## 脚本
+## 三、脚本
 
 > CentOS7 环境安装脚本：[软件运维配置脚本集合](https://github.com/dunwu/linux-tutorial/tree/master/codes/linux/soft)
 
@@ -189,7 +190,7 @@ $ systemctl enable nginx.service
 
 - 默认安装 - 执行以下任意命令即可：
 
-```sh
+```shell
 curl -o- https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/nginx-install.sh | bash
 wget -qO- https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/nginx-install.sh | bash
 ```
