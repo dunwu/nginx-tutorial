@@ -13,7 +13,7 @@
 		<java.version>1.8</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<spring.version>5.0.2.RELEASE</spring.version>
+		<spring.version>5.0.19.RELEASE</spring.version>
 		<tomcat.version>8.5.50</tomcat.version>
 	</properties>
 	<dependencies>
