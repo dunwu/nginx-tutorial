@@ -110,7 +110,7 @@ http {
     include       D:/Tools/nginx-1.10.1/conf/mime.types;
     default_type  application/octet-stream;
 
-    #设定日志
+    #设定日志格式
 	log_format  main  '[$remote_addr] - [$remote_user] [$time_local] "$request" '
                       '$status $body_bytes_sent "$http_referer" '
                       '"$http_user_agent" "$http_x_forwarded_for"';
@@ -502,7 +502,7 @@ Nginx 中的配置要点：
 - 将 autoindex_exact_size 开启可以显示文件的大小。
 - 将 autoindex_localtime 开启可以显示文件的修改时间。
 - root 用来设置开放为文件服务的根路径。
-- charset 设置为 `charset utf-8,gbk;`，可以避免中文乱码问题（windows 服务器下设置后，依然乱码，本人暂时没有找到解决方法）。
+- charset 设置为 `charset gbk,utf8;`，可以避免中文乱码问题
 
 一个最简化的配置如下：
 
@@ -512,7 +512,7 @@ autoindex_exact_size on;# 显示文件大小
 autoindex_localtime on;# 显示文件时间
 
 server {
-    charset      utf-8,gbk; # windows 服务器下设置后，依然乱码，暂时无解
+    charset      gbk,utf8;  #注意先后顺序
     listen       9050 default_server;
     listen       [::]:9050 default_server;
     server_name  _;
