@@ -26,13 +26,13 @@
 
 **Nginx (engine x)** 是一款轻量级的 Web 服务器 、反向代理服务器及电子邮件（IMAP/POP3）代理服务器。
 
-![img](http://dunwu.test.upcdn.net/cs/web/nginx/nginx.jpg!zp)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/cs/web/nginx/nginx.jpg)
 
 **什么是反向代理？**
 
 反向代理（Reverse Proxy）方式是指以代理服务器来接受 internet 上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 internet 上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。
 
-![img](http://dunwu.test.upcdn.net/cs/web/nginx/reverse-proxy.png!zp)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/cs/web/nginx/reverse-proxy.png)
 
 ## 二、Nginx 入门
 
@@ -82,7 +82,7 @@ nginx.exe -c conf/nginx.conf
 
 `nginx.conf` 配置文件如下：
 
-> ***注：`conf/nginx.conf` 是 nginx 的默认配置文件。你也可以使用 nginx -c 指定你的配置文件***
+> **_注：`conf/nginx.conf` 是 nginx 的默认配置文件。你也可以使用 nginx -c 指定你的配置文件_**
 
 ```nginx
 #运行用户
@@ -253,7 +253,7 @@ http {
 
 nginx 也可以实现简单的负载均衡功能。
 
-![img](http://dunwu.test.upcdn.net/cs/web/nginx/nginx-load-balance.png!zp)
+![img](https://raw.githubusercontent.com/dunwu/images/dev/cs/web/nginx/nginx-load-balance.png)
 
 假设这样一个应用场景：将应用部署在 192.168.1.11:80、192.168.1.12:80、192.168.1.13:80 三台 linux 环境的服务器上。网站域名叫 www.helloworld.com，公网 IP 为 192.168.1.11。在公网 IP 所在的服务器上部署 nginx，对所有请求做负载均衡处理（下面例子中使用的是加权轮询策略）。
 
