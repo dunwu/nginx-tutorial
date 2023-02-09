@@ -314,7 +314,7 @@ http {
 
 Nginx 提供了多种负载均衡策略，让我们来一一了解一下：
 
-负载均衡策略在各种分布式系统中基本上原理一致，对于原理有兴趣，不妨参考 [负载均衡](https://dunwu.github.io/blog/design/theory/load-balance-theory/)
+负载均衡策略在各种分布式系统中基本上原理一致，对于原理有兴趣，不妨参考 [负载均衡](https://dunwu.github.io/blog/pages/98a1c1/)
 
 ##### 轮询
 
