@@ -33,7 +33,7 @@ Nginx 的高并发，官方测试支持 5 万并发连接。实际生产环境�
 
 ### 主从模式
 
-![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20200125161055.png)
+![img](https://raw.githubusercontent.com/dunwu/images/master/snap/20200125161055.png)
 
 **Nginx 采用一主多从的主从架构**。
 

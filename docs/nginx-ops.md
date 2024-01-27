@@ -20,11 +20,11 @@
 
 （1）进入[官方下载地址](https://nginx.org/en/download.html)，选择合适版本（nginx/Windows-xxx）。
 
-![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20180920181023092347.png)
+![img](https://raw.githubusercontent.com/dunwu/images/master/snap/20180920181023092347.png)
 
 （2）解压到本地
 
-![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20180920181023092044.png)
+![img](https://raw.githubusercontent.com/dunwu/images/master/snap/20180920181023092044.png)
 
 （3）启动
 
@@ -145,7 +145,7 @@ $ firewall-cmd --reload
 
 启动后，访问站点：
 
-![img](https://raw.githubusercontent.com/dunwu/images/dev/snap/20180920181016133223.png)
+![img](https://raw.githubusercontent.com/dunwu/images/master/snap/20180920181016133223.png)
 
 #### Linux 开机自启动
 

@@ -1,4 +1,4 @@
-<div align="center"><img width="100px" src="https://raw.githubusercontent.com/dunwu/images/dev/common/dunwu-logo.png" /></div>
+<div align="center"><img width="100px" src="https://raw.githubusercontent.com/dunwu/images/master/common/dunwu-logo.png" /></div>
 
 # nginx-tutorial
 
